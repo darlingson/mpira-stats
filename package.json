@@ -6,6 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "nodemonConfig":{
+    "watch": [
+     "src"
+   ],
+   "exec": "tsc && node ./dist/main.js",
+   "ext": "ts,js,json"
+ },
   "keywords": [],
   "author": "",
   "license": "ISC",
