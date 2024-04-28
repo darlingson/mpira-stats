@@ -7,11 +7,11 @@ This project is aimed to serve as a playground for mastering backend development
 * Master backend development using Express and TypeScript.
 * Develop a RESTful API to serve Malawian football stats using Supabase.
 * Develop an API following industry best practices for API design and implementation. including but not limited to:
-* ** RESTful principles: Utilize RESTful design patterns for a well-structured and predictable API. This involves using clear resource URLs, standard HTTP verbs (GET, POST, PUT, DELETE), and JSON data format.
-* ** Descriptive naming: Employ clear and consistent names for API endpoints, parameters, and responses to enhance developer understanding.
-* ** Comprehensive documentation: Provide thorough API documentation that includes clear explanations for each endpoint, code samples, usage scenarios, and error handling details.
-* ** Robust error handling: Implement informative error messages with appropriate HTTP status codes to guide developers in troubleshooting API interactions.
-* ** Security considerations: Enforce security measures to protect your API from unauthorized access and potential vulnerabilities. This may involve authentication, authorization, and data validation techniques.
+    * **RESTful principles:** Utilize RESTful design patterns for a well-structured and predictable API. This involves using clear resource URLs, standard HTTP verbs (GET, POST, PUT, DELETE), and JSON data format.
+    * **Descriptive naming:** Employ clear and consistent names for API endpoints, parameters, and responses to enhance developer understanding.
+    * **Comprehensive documentation:** Provide thorough API documentation that includes clear explanations for each endpoint, code samples, usage scenarios, and error handling details.
+    * **Robust error handling:** Implement informative error messages with appropriate HTTP status codes to guide developers in troubleshooting API interactions.
+    * **Security considerations:** Enforce security measures to protect your API from unauthorized access and potential vulnerabilities. This may involve authentication, authorization, and data validation techniques.
 * Build a user interface (web pages) to display the football stats in a user-friendly format.
 * Separate concerns between the API and the web pages, allowing developers to interact with the API and users to consume the data through the web interface.
 
