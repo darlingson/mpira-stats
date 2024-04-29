@@ -13,7 +13,7 @@ app.use('/api', apiRoutes);
 
 const PORT = process.env.PORT || 3001;
 
-app.get('/api', (_req, res) => {
+app.get('/', (_req, res) => {
   res.status(200).json({ message: 'Hello from the server!' });
 });
 
