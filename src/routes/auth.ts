@@ -2,6 +2,9 @@ import express, { Router } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../stores/user_sqlite_store';
+import verifyToken from '../middleware/authMiddleware';
+
+
 export const authRoutes = Router();
 authRoutes.post('/register', async (req, res) => {
     try {
@@ -52,4 +55,8 @@ authRoutes.post('/login', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Login failed' });
     }
+});
+
+authRoutes.get('/protected', verifyToken, (req, res) => {
+    res.status(200).json({ message: 'Protected route accessed' });
 });
