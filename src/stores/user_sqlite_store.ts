@@ -11,18 +11,18 @@ class User {
     id: string;
     username: string;
     password: string;
-    constructor(username: string, password: string, id?: string) {
-        this.id = id ?? uuidv4(); // If id is not provided, generate a new UUID
+    constructor(username: string, password: string, id: string = uuidv4()) {
+        this.id = id;
         this.username = username;
         this.password = password;
     }
 
     async save(): Promise<void> {
-        const hashedPassword = await bcrypt.hash(this.password, 10);
+        // const hashedPassword = await bcrypt.hash(this.password, 10);
         db.run(`
             INSERT INTO users (id, username, password)
             VALUES (?, ?, ?)
-        `, [this.id, this.username, hashedPassword], (err) => {
+        `, [this.id, this.username, this.password], (err) => {
             if (err) {
                 throw new Error('Failed to save user');
             }
@@ -45,9 +45,9 @@ class User {
                     return;
                 }
                 // Assuming the first row contains the user data
-                const userData = rows[0] as { id: string, username: string, password: string };
+                const userData = rows[0] as { password: string, id: string, username: string };
                 const { id, username, password } = userData;
-                resolve(new User(id, username, password));
+                resolve(new User(username, password, id));
             });
         });
     }

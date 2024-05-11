@@ -10,8 +10,8 @@ db.serialize(() => {
             id TEXT PRIMARY KEY,
             username TEXT NOT NULL,
             password TEXT NOT NULL,
-            createdAt TEXT NOT NULL,
-            updatedAt TEXT NOT NULL
+            createdAt TEXT DEFAULT CURRENT_TIMESTAMP,
+            updatedAt TEXT DEFAULT CURRENT_TIMESTAMP
         )
     `, (err: Error | null) => { // Explicitly define the type for err
         if (err) {
