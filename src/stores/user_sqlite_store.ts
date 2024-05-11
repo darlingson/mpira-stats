@@ -11,9 +11,8 @@ class User {
     id: string;
     username: string;
     password: string;
-
-    constructor(username: string, password: string) {
-        this.id = uuidv4();
+    constructor(username: string, password: string, id?: string) {
+        this.id = id ?? uuidv4(); // If id is not provided, generate a new UUID
         this.username = username;
         this.password = password;
     }
@@ -31,16 +30,28 @@ class User {
     }
     //method for login called findOne
     static async findOne(username: string): Promise<User | null> {
-        const user = await db.get(`
-            SELECT *
-            FROM users
-            WHERE username = ?
-        `, [username]);
-        if (!user) {
-            return null;
-        }
-        return new User(user.username, user.password);
+        return new Promise<User | null>((resolve, reject) => {
+            db.all(`
+                SELECT *
+                FROM users
+                WHERE username = ?
+            `, [username], (err, rows) => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+                if (rows.length === 0) {
+                    resolve(null); // User not found
+                    return;
+                }
+                // Assuming the first row contains the user data
+                const userData = rows[0] as { id: string, username: string, password: string };
+                const { id, username, password } = userData;
+                resolve(new User(id, username, password));
+            });
+        });
     }
+    
 }
 
 export default User;
