@@ -1,5 +1,4 @@
 import express, { Router } from 'express';
-const router = express.Router();
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../stores/user_sqlite_store';
@@ -35,5 +34,3 @@ authRoutes.post('/login', async (req, res) => {
         res.status(500).json({ error: 'Login failed' });
     }
 });
-
-module.exports = router;
