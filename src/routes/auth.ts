@@ -1,10 +1,10 @@
-import express from 'express';
+import express, { Router } from 'express';
 const router = express.Router();
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../stores/user_sqlite_store';
-
-router.post('/register', async (req , res) => {
+export const authRoutes = Router();
+authRoutes.post('/register', async (req , res) => {
     try {
         const { username, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -16,7 +16,7 @@ router.post('/register', async (req , res) => {
     }
 });
 
-router.post('/login', async (req, res) => {
+authRoutes.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await User.findOne(username);
