@@ -6,11 +6,9 @@ interface AuthenticatedRequest extends Request {
 }
 function verifyToken(req:  AuthenticatedRequest, res: Response, next: NextFunction) {
     const token = req.header('Authorization');
-    console.log(token)
     if (!token) return res.status(401).json({ error: 'Access denied' });
     try {
         const decoded = jwt.verify(token, 'your-secret-key') as JwtPayload;
-        console.log(decoded)
         req.userId = decoded.userId as string;
         next();
     } catch (error) {
