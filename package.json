@@ -1,13 +1,15 @@
 {
   "name": "mpira-stats",
+  "type": "module",
   "scripts": {
-    "start": "vercel dev",
-    "deploy": "vercel"
+    "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
+    "@hono/node-server": "^1.13.7",
     "hono": "^4.6.15"
   },
   "devDependencies": {
-    "vercel": "^32.4.1"
+    "@types/node": "^20.11.17",
+    "tsx": "^4.7.1"
   }
 }
