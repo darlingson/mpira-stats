@@ -4,6 +4,7 @@ import { supabase } from "./utils/supabaseClient.js";
 import { jwt } from "hono/jwt";
 import type { JwtVariables } from "hono/jwt";
 import { auth } from "./routes/auth.ts";
+import {team_routes} from "./routes/teams.js";
 
 type Variables = JwtVariables;
 
@@ -16,6 +17,7 @@ if (!jwtSecret) {
 // app.use("/auth/*", jwt({ secret: jwtSecret }));
 
 app.route("/auth", auth);
+app.route("/teams",team_routes);
 app.get("/auth/page", (c) => {
   return c.text("You are authorized");
 });
