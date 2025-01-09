@@ -16,7 +16,7 @@ team_routes.get('/', async (ctx) => {
 team_routes.get('/:slug', async (ctx) => {
     const slug = ctx.req.param('slug');
 
-    const { data, error } = await supabase.from('teams').select('*').eq('Slug', slug).single();
+    const { data, error } = await supabase.from('teams').select('*').eq('slug', slug).single();
 
     if (error) {
         if (error.code === 'PGRST116') {
