@@ -1,5 +1,6 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
+import { handle } from 'hono/vercel'
 import { supabase } from "./utils/supabaseClient.js";
 import { jwt } from "hono/jwt";
 import type { JwtVariables } from "hono/jwt";
@@ -33,3 +34,5 @@ serve({
   fetch: app.fetch,
   port,
 });
+export const GET = handle(app)
+export const POST = handle(app)
