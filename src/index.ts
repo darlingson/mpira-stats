@@ -7,6 +7,7 @@ import type { JwtVariables } from "hono/jwt";
 import { auth } from "./routes/auth.ts";
 import {team_routes} from "./routes/teams.js";
 import {player_routes} from "./routes/players.js";
+import {goals} from "./routes/goal_events.js";
 
 type Variables = JwtVariables;
 
@@ -21,6 +22,7 @@ if (!jwtSecret) {
 app.route("/auth", auth);
 app.route("/teams",team_routes);
 app.route("/players",player_routes);
+app.route("goals",goals);
 app.get("/auth/page", (c) => {
   return c.text("You are authorized");
 });
